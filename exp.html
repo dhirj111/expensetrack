@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>expense tracker</title>
+</head>
+<body>
+
+  <form onsubmit="handleFormSubmit(event)">
+choose expenseamount: <input type="number" name="amount" id="amount">
+choose description: <input type="text" name="detail" id="detail">
+choose a category: <select name="type" id="type">
+
+  <option value="">food</option>
+  <option value="">entertainment</option>
+  <option value="">study</option>
+</select>
+
+<button type="submit">submit</button>
+
+  </form>
+
+  <ul id="expense">
+    <li  class="expenses">100 - food -burger <button class="delete-btn">delete</button><button class="edit-btn">edit</button></li>
+    <li  ><button class="delete-btn">delete</button><button class="edit-btn">edit</button></li>
+    <li  ><button class="delete-btn">delete</button><button class="edit-btn">edit</button></li>
+  </ul>
+</body>
+<script src="exp.js"></script>
+</html>
