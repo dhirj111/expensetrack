@@ -27,15 +27,16 @@ function handleFormSubmit(event) {
     " " +
     '<button class="delete-btn">delete</button>' +
     '<button class="edit-btn">Edit</button>';
+
+  listitem.setAttribute("data-edtail", edetail);
   list.appendChild(listitem);
 
   let users = {
     amount: eamount,
-    detail
-    : edetail,
+    detail: edetail,
   };
   let usersstringed = JSON.stringify(users);
-  localStorage.setItem(eamount, usersstringed);
+  localStorage.setItem(edetail, usersstringed);
 }
 
 // delete function
@@ -44,23 +45,27 @@ allexpenses.addEventListener("click", function (event) {
   event.preventDefault();
   if (event.target.classList.contains("delete-btn")) {
     const expensetodelete = event.target.parentElement;
+    let detailsofexpense = expensetodelete.getAttribute('data-edtail')
+    
     allexpenses.removeChild(expensetodelete);
+    localStorage.removeItem(detailsofexpense)
+    
   }
 });
-
 
 //having edit functionality
 
 allexpenses.addEventListener("click", function (event) {
   event.preventDefault();
   if (event.target.classList.contains("edit-btn")) {
-
-    const expensetodelete = event.target.parentElement;
- console.log(expensetodelete)
-    allexpenses.removeChild(expensetodelete);
+    const editexpense = event.target.parentElement;
+    editexpensedetail = editexpense.getAttribute("data-edtail");
+    stringobjcetified = JSON.parse(localStorage.getItem(editexpensedetail));
+    let addform = document.querySelector("form");
+    addform.amount.value =stringobjcetified.amount;
+    addform.detail.value =stringobjcetified.detail;
+    localStorage.removeItem(editexpensedetail)
+    allexpenses.removeChild(editexpense);
   }
 });
 
-
-let addform = document.querySelector("form");
-addform.amount.value =1257
